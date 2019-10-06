@@ -1,0 +1,3 @@
+"Call back function we are using whe nwe need to pass a function as an argument" 
+So THe function who keeps function arguments is called callback function.
+The function which going to be called from callback function is a normal function called as function pointer.
