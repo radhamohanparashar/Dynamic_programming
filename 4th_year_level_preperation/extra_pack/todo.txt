@@ -1,0 +1,97 @@
+OS questions : 
+
+1. What is process ?
+- Process is program in execution. 
+2. What is difference between process and threads? 
+- Threads are the part of process and share the virtual address space of the process.Threads are lightweight
+  becasue overhead of creating thread is less compared to process.
+  Communication between process is costly.
+  
+3. What is semaphore ?
+  Semaphore allows process and threads to synchronize their actions. The semaphore is an integer value 
+  and allowed to be falldown below zero.
+
+4. What is paging?
+  
+5. What is demand paging?
+6. What is scheduling?
+7. What are different types of scheduling?
+   FCFS 
+   SJF 
+   Priority Scheduling 
+   Round Robin Scheduling 
+   Multilevel queue scheduling 
+   Multilevel feedback Queue scheduling 
+   
+8. What is internal and external fragmentation?
+9. What is context switching?
+10. What is user space and kernal space ?
+11. What is system call?
+12. What is signal?
+13. What is intterupt?
+14. What is difference between signal and interrupt ?
+15. What is priority inversion?
+16. Explain process state diagram?
+17. What is deamon process?
+18. What is zombie process?
+19. Difference between multiprocessing and multitasking system ?
+20. What is difference between segment and frames ?
+21. What is Process control Block ?
+22. What is inode and describe inode structure?
+23. What is deadlock and how to avoid it ?
+24. What are the techniques of deadlock prevention ?
+25. What are message queues and how to create a message queues ?
+26. What is shared memory and how to implement it ?
+27. Which is IPC is better and why ?
+28. Implement Socket programming between process?
+29. How to kill system call works?
+30. What is dup() call ?
+31. What is the process ID of init process?
+32. What is difference between mutex and semaphore?
+33. Why threads are light weight than process?
+34. How to search file or string in directly recursively ?
+35. What long term and short term scheduler ? 
+36. Explain the booting process ? 
+37. What is virtual memory ?
+38. What is the difference between priority inversion and priority inheritence ?
+39. What is difference between user level and kernal level threads ? 
+40. How many zombie process system can handle?
+41. What is the maximum no of threads can be created in a process?
+42. What happened when fork is called?
+43. What are things child and parent process share ?
+44. What are the things threads and process share ?
+45. Explain ioctl() system call ?
+
+
+=====================================
+Networking : 
+
+1. Explain OSI and TCP/IP model
+2. Difference between TCP and UDP with packet format
+3. How Ping works ?
+4. What is STP and its convergence process? 
+5. What is alternate port in STP ?
+6. What is RIPv1 and RIPv2? Explain in detail.
+7. What is DLDP and explain the state machine.
+8. What is VLAN ?
+9. What is tagged and untagged ? and how it behaves in network?
+
+10. How mac learning happens ?
+11. BPDU details of STP and DLDP ?
+12. What is SNMP and explain different versions of SNMP?
+13. What is difference between snmpwalk and getbulk?
+14. What is load balancing and how to achieve ? 
+15. What is subnetting and explain with example ?
+16. Explain ipv6 addressing and routing.
+
+
+Qos : 
+
+1. What is Qos ?
+    
+2. What is queueing and explain any queueing alogrithm?
+3. What is shaping and how we achieve shaping ?
+4. What is delay, jitter and latency ?
+5. What is policer ?
+6. Different module is QOS ?
+7. What is WRED and what is the algorithm used in WRED ?

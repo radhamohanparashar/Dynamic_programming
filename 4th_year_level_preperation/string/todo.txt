@@ -1,0 +1,8 @@
+3. Strings
+    -- Program to implement strlen() , strcat(), strrev()
+    -- Program to find the anagrams in the string 
+    -- Program to sort a string
+    -- Program to remove the spaces and vowels from the string.
+    -- Program to find frequency of substring in given string.
+    -- Program to find possible subset of the string
+    -- Program to find out the DATE of specific format in given sentance.

@@ -1,0 +1,8 @@
+    -- Program convert Little endian to big endian and vice versa. 
+    -- Program to find alternate pattern in given number 
+    -- Program to Swap the ith and jth Bits for a 32-Bit Integer 
+    -- Program to Reverse all the Bits of an 32-bit Integer using Bitwise 
+    -- Program to Check whether the given Number is Palindrome or not using Bitwise Operator 
+    -- Program To Identify the Missing Number in an Integer Array of Size N-1 with Numbers[1,N] 
+    -- Program that uses Function to return MSB position of unsigned Integer
+    -- Program to find Next higher Value of N with same 1’s 

@@ -1,0 +1,6 @@
+    -- STP and Port states
+    -- RIP and IP routing 
+    -- VLAN Tagging and Trunk concepts 
+    -- QOS - Policing and Shaping
+    -- QOS WRED and WFQ concept
+    -- SNMP Version 

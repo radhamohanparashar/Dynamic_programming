@@ -1,0 +1,8 @@
+    -- Program to implement message Queues
+    -- Program to implement shared memory
+    -- Program to implement socket programing using IP
+    -- Program to implement socket between process
+    -- Program to implement PIPE ---- DONE
+    -- Program to create thread and perform syncrhonization
+    -- Program to implement producer and consumer problem using semaphore
+    -- Program to implement signals

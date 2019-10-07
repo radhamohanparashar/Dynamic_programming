@@ -1,0 +1,6 @@
+    -- Process and child process sharing and non-sharing elements 
+    -- Deamon and Zombie process
+    -- CPU scheduling 
+    -- Memory mangement and Page fault concepts --- DONE
+    -- Process table , Inode , file table and process state diagram
+    -- Context switch
