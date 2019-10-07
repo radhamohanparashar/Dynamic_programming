@@ -1,0 +1,12 @@
+1. Program to impliment 2D and 1D array with single double pointers.
+2. Run following : - 
+
+
+    -- Program to find the intersection of two sorted arrays.
+    -- Program to allocate dynamic memory to 2D array.
+    -- Program to implement queue using array.
+    -- Program to implemt stacks using array.
+    -- Program to implement binary search on sorted array.
+    -- Program to Find the two Elements such that their Sum is Closest to Zero.
+    -- Program to Find 2 Elements in the Array such that Difference between them is Largest.
+    -- Program to Interchange any two Rows & Columns in the given Matrix.
