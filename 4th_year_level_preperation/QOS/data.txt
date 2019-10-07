@@ -1,0 +1,14 @@
+https://www.cisco.com/c/en/us/support/docs/quality-of-service-qos/qos-policing/19645-policevsshape.html#policingvsshaping
+
+
+https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_conmgt/configuration/xe-16-6/qos-conmgt-xe-16-6-book/qos-conmgt-oview.html#GUID-58E4F027-85B1-471F-8CF2-B5F54D176821
+
+
+cisco.com/c/en/us/td/docs/ios-xml/ios/qos_mqc/configuration/xe-16-7/qos-mqc-xe-16-7-book/qos-limits-wred.html
+
+
+https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk40661
+
+
+
+https://www.comm.utoronto.ca/~jorg/teaching/ece466/labs/Lab3_v3c.pdf

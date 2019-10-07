@@ -1,0 +1,271 @@
+MEF 10.2
+   6.1 Ethernet Virtual Connection Type Service Attribute
+   There are 3 type of Service attribute: -
+   6.1.1 Point-to-Point EVC
+
+	In a Point-to-Point EVC, exactly two UNIs MUST be associated with one another.
+	
+   6.1.2 Multipoint-to-Multipoint EVC
+
+	In a Multipoint EVC, two3 or more UNIs MUST be associated with one another. An ingress Service Frame mapped to the EVC at one of the UNIs MUST NOT result in an egress Service Frame at a UNI that is not in the EVC.
+	a single broadcast or multicast ingress Service Frame (as determined from the destination MAC address) at a given UNI would be replicated in the Metro Ethernet Network and a single copy would be delivered to each of the other UNIs in the EVC. T
+
+6.1.3 Rooted-Multipoint EVC
+
+In a Rooted-Multipoint EVC, one or more of the UNIs MUST be designated as a Root and each of the
+other UNIs MUST be designated as a Leaf. An ingress Service Frame mapped to the EVC at a Root UNI
+MAY be delivered to one or more of the other UNIs in the EVC. An ingress Service Frame mapped to the
+EVC at a Leaf UNI MUST NOT result in an egress Service Frame at another Leaf UNI but MAY result in
+an egress Service Frame at some or all of the Root UNIs. The rules under which a frame is delivered to a
+UNI in the EVC are specific to the particular service definition. Typically, a single broadcast or multicast
+ingress Service Frame (as determined from the destination MAC address) at a Root UNI would be
+replicated in the Metro Ethernet Network and a single copy would be delivered to each of the other UNIs
+in the EVC. This kind of delivery would also typically apply to a Service Frame for which the MEN has not
+yet learned an association of the destination MAC address with an EVC, UNI pair. Figure 4 illustrates a
+Rooted-Multipoint EVC with one Root UNI.
+
+6.2 EVC ID Service Attribute
+
+The EVC ID is an arbitrary string administered by the Service Provider that is used to identify an EVC
+within the MEN. The EVC ID MUST be unique across all EVCs in the MEN. It is intended for management
+and control purposes. The EVC ID is not carried in any field in the Service Frame. As an example, the
+Acme Service Provider might use “EVC-0001898-ACMEMEGAMART” to represent the 1898th EVC in the
+MEN and the customer for the EVC is MegaMart.
+
+6.2.1 Class of Service Identifier Service Attribute
+
+Requirement: - PKT-QoS-002, PKT-QoS-005
+
+ Class of Service Identifier Based on EVC
+ Class of Service Identifier Based on Priority Code Point Field
+ Class of Service Identifier Based on DSCP
+ Class of Service Identifier Based on Layer 2 Control Protocol
+
+6.3 CE-VLAN ID/EVC Map Service Attribute (Section 7.7 in MEF 10.2)
+
+Basic Concept: -
+In this example, an ingress Service Frame with CE-VLAN ID 47 is transported according to the properties
+and attributes of EVC1. An untagged or priority tagged ingress Service Frame is transported according to
+the properties and attributes of EVC3. An egress frame coming from EVC2 is given CE-VLAN ID 1343.
+When an instance of the CE-VLAN ID/EVC Map does not contain an entry for a given CEVLAN ID, any
+ingress Service Frame at the UNI with this CE-VLAN ID MUST be discarded by the MEN. Also, an egress
+Service Frame MUST NOT have a CE-VLAN ID with this value at the UNI while using this instance of the
+CE-VLAN ID/EVC Map. In some scenarios, it may be necessary for the Subscriber and the Service
+Provider to agree upon the CE-VLAN ID/EVC Map at the UNI. One way to implement this is to have the
+Service Provider dictate the mapping. This is what is frequently done with the mapping between DLCIs
+and permanent virtual connections for Frame Relay. Also note that for a given UNI, the CEVLAN ID/EVC
+Map may be constrained by the range of CE-VLAN ID values that can be supported by the CE and the
+range of CE-VLAN ID values that can be supported by the Service Provider
+
+CE-VLAN ID Significance
+
+CE-VLAN ID/EVC Maps at Two UNIs
+
+6.4 Bandwidth Profiles Service Attributes (Section 7.11 MEF 10.2)
+
+A Bandwidth Profile is a method characterizing Service Frames for the purpose of rate enforcement or
+policing. There are two types of Bandwidth Profile. An Ingress Bandwidth Profile is used to regulate the
+amount of ingress traffic at a particular UNI, while an Egress Bandwidth Profile is used to regulate the
+amount of egress traffic at a particular UNI.
+
+6.4.1 Standard Bandwidth Profile Parameters and Algorithm
+Requirement: - PKT-QoS-004, PKT-QoS-008, PKT-QoS-009
+
+Committed Information Rate (CIR) expressed as bits per second. CIR MUST be ≥ 0.
+• Committed Burst Size (CBS) expressed as bytes. When CIR &gt; 0, CBS MUST be greater than or equal
+to the largest Maximum Transmission Unit size among all of the EVCs that the Bandwidth Profile applies
+to. See Section 6.10. 
+• Excess Information Rate (EIR) expressed as bits per second. EIR MUST be ≥ 0.
+• Excess Burst Size (EBS) expressed as bytes. When EIR &gt; 0, EBS MUST be greater than or equal to
+the largest Maximum Transmission Unit size among all of the EVCs that the Bandwidth Profile applies to.
+See Section 6.10. 
+• Coupling Flag (CF) MUST have only one of two possible values, 0 or 1.
+• Color Mode (CM) MUST have only one of two possible values, “color-blind” and “color-aware.”
+
+6.4.1.1 Ingress Bandwidth Profiles Service Attributes
+ Ingress Bandwidth Profile per Ingress UNI Service Attribute
+ Ingress Bandwidth Profile per EVC Service Attribute
+ Ingress Bandwidth Profile per Class of Service Identifier Service Attribute
+ Simultaneous Application of the Ingress Bandwidth Profile Application Models
+
+ Service Frame Disposition
+
+6.4.1.2 Ingress Bandwidth Profile per Ingress UNI Service Attribute
+In this model, a single Ingress Bandwidth Profile MUST be applied to all ingress Service Frames at the
+UNI
+
+6.4.1.3 Ingress Bandwidth Profile per EVC Service Attribute
+In this model, a single Ingress Bandwidth Profile MUST be applied to all ingress Service Frames for an
+instance of an EVC at the UNI. Thus, if a UNI has 3 Ethernet Virtual Connections, there could be 3
+Ingress Bandwidth Profiles, one for each EVC. Figure 15 illustrates an example of the application of
+Ingress Bandwidth Profiles per EVC. In this example, EVC1 could have CIR=15 Mbps, EVC2 could have
+CIR = 10 Mbps, and EVC3 could have CIR = 20 Mbps.
+
+6.4.1.4 Ingress Bandwidth Profile per Class of Service Identifier Service Attribute
+In this model, a single Ingress Bandwidth Profile MUST be applied to all ingress Service Frames with a
+specific Class of Service Identifier. Class of Service Identifiers are specified in Section 6.8. Refer to the
+example in Figure 16. In this example, there are three Class of Service Identifiers within EVC1, each with
+a separate Ingress Bandwidth Profile. The Ingress Bandwidth Profile per Class of Service Identifier
+service attribute is associated with each EVC at the UNI.
+
+6.4.1.5 Simultaneous Application of the Ingress Bandwidth Profile Application Models
+
+ If there is a per UNI Ingress Bandwidth Profile, then there cannot be any other Ingress Bandwidth
+Profiles at that UNI.
+• If there is a per EVC Ingress Bandwidth Profile on an EVC, then there cannot be any per Class of
+Service Ingress Bandwidth Profiles for instances of CoS on that EVC
+
+6.4.1.6 Service Frame Disposition
+The disposition of a given Service Frame with respect to delivery to an egress UNI is dependent on the
+Service Frame’s level of compliance to the Ingress Bandwidth Profile that is applied to it. This is called the
+Ingress Bandwidth Profile compliance level and it has three possible values: Green, Yellow, or Red. Table
+11 defines how the Ingress Bandwidth Profile compliance is related to the disposition of the Service
+Frame. In this table, “Not Applied” identifies the case where no Ingress Bandwidth Profile was applied to
+the Service Frame in question.
+
+6.4.2 Egress Bandwidth Profiles Service Attributes
+
+6.4.2.1 Egress Bandwidth Profile per Egress UNI Service Attribute
+The Egress Bandwidth Profile per Egress UNI service attribute is independent of the EVCs at the UNI.
+
+6.4.2.2 Egress Bandwidth Profile per EVC Service Attribute
+In this model, a single Egress Bandwidth Profile is defined for an EVC at the egress UNI.
+
+6.4.2.3 Egress Bandwidth Profile per Class of Service Identifier Service Attribute
+In this model, a single Egress Bandwidth Profile is defined for a specific Class of Service Identifier that is
+defined at the egress UNI.
+
+6.4.2.4 Simultaneous Application of the Egress Bandwidth Profile Application Models
+ If there is a per UNI Egress Bandwidth Profile, then there cannot be any other Egress Bandwidth
+Profiles at that UNI.
+ If there is a per EVC Egress Bandwidth Profile on an EVC, then there cannot be any per Class of
+Service Egress Bandwidth Profiles for instances of CoS on that EVC.
+
+7 MEF 14
+Requirement: - PKT-QoS-007
+
+Please find the attached MEF 14 document
+
+8 QoS with MPLS
+Requirement: - PKT-QoS-006, PKT-QoS-010,
+
+8.1 Default MPLS and EoMPLS QoS Configuration
+
+QoS is disabled. Packets are not modified, and the CoS, DSCP, and IP precedence values in the packet
+are not changed. Traffic is switched in pass-through mode (packets are switched without any rewrites and
+classified as best effort without any policing). The default behavior for VLAN and port-based EoMPLS
+packets is to use a value of 0 in the EXP bits of the virtual-connection and tunnel labels. The default
+behavior for L3VPN MPLS packets is to relay the IP Precedence bits into the EXP bits of the virtual-
+connection and tunnel labels. You can change the default behavior for VLAN- or port-based EoMPLS by
+applying a hierarchical QoS policy.
+
+8.1.1 MPLS QoS Configuration Guidelines
+
+The switch supports these MPLS QoS features: – MPLS can tunnel the QoS values of a packet (that is,
+QoS is transparent from edge to edge). With QoS transparency, the IP marking in the IP packet is
+preserved across the MPLS network. – You can mark the MPLS EXP field differently and separately from
+the per-hop behavior (PHB) marked in the IP precedence, DSCP, or CoS field. • One label-switched path
+(LSP) can support up to eight classes of traffic (that is, eight PHBs) because the MPLS EXP field is a 3-
+bit field. • MPLS DiffServ tunneling modes support E-LSPs. An E-LSP is an LSP on which nodes
+determine the QoS treatment for MPLS packet exclusively from the EXP bits in the MPLS header. • The
+switch does not support egress QoS marking. • MPLS QoS classification does not work for bridged MPLS
+packets. • For port-based EoMPLS, you cannot match the payload VLAN.
+
+8.1.2 Setting the Priority of Packets with Experimental Bits
+
+MPLS and EoMPLS provide QoS on the ingress router by using three experimental bits in a label to
+determine the priority of packets. To support QoS between LERs, set the experimental bits in both the
+virtual-connection and tunnel labels. The process includes these steps on the ingress router:
+
+• Configure a class map to classify IP packets according to their DSCP or IP precedence classification.
+Configure a policy map to mark MPLS packets (write their classification into the MPLS experimental field).
+• Attach the service policy to the input interface or service instance. Beginning in privileged EXEC mode,
+follow these steps to set the experimental bits for EoMPLS or MPLS QoS:
+
+Switch(config)# class-map match-all gold-class
+Switch(config-cmap)# match ip dscp 1
+Switch(config-cmap)# exit
+Switch(config)# class-map match-all silver-class
+Switch(config-cmap)# match ip precedence 2
+Switch(config-cmap)# exit
+Switch(config)# policy-map in-policy
+Switch(config-pmap)# class gold-class
+Switch(config-pmap-c)# set mpls experimental 5
+Switch(config-pmap-c)# exit
+Switch(config-pmap)# class silver-class
+Switch(config-pmap-c)# set mpls experimental 4
+Switch(config-pmap-c)# exit
+Switch(config)# interface gigabitethernet1/1/1
+Switch(config-if)# service-policy input in-policy
+Switch(config-if)# end
+
+Default QoS values are set but new mapping profile can be set under the MPLS QoS settings .
+
+QoS Functions Cisco IOS-Enabling Features
+Traffic classification Access control list matching
+Traffic marking IP Precedence bits
+
+IP DSCP 1
+MPLS EXP 2  field
+
+Congestion management LLQ 3
+CBWFQ 4
+Congestion avoidance WRED 5
+Traffic conditioning Shaping and policing
+
+Name DSCP (binary) DSCP (decimal)
+AF11 001010 10
+AF12 001100 12
+AF13 001110 14
+AF21 010010 18
+AF22 010100 20
+AF23 010110 22
+AF31 011010 26
+AF32 011100 28
+AF33 011110 30
+AF41 100010 34
+AF42 100100 36
+AF43 100110 38
+
+https://www.networkworld.com/article/2298533/lan-wan/mpls-and-quality-of-service.html
+
+https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst6500/ios/12-
+2SX/configuration/guide/book/mplsqos.pdf
+
+9 Hierarchical Quality of Service 
+Requirement: - PKT-QoS-011
+
+https://www.cisco.com/c/en/us/td/docs/routers/asr9000/software/asr9k_r4-
+0/qos/configuration/guide/qc40asr9kbook/qc40hqos.pdf
+
+(HQoS) 
+
+organizes a scheduler policy into a hierarchical tree that consists of a root node, branches
+nodes, and leaf nodes, where: The root node is the convergence point for all traffic and corresponds to a
+scheduler followed by a traffic shaper.
+Hierarchical QoS allows you to specify QoS behavior at multiple policy levels, which provides a high
+degree of granularity in traffic management. A hierarchical policy is a QoS model that enables you to
+specify QoS behavior at multiple levels of hierarchy. You can use hierarchical policies to: • Allow a parent
+class to shape multiple queues in a child policy
+
+• Apply specific policy map actions on the aggregate traffic
+• Apply class-specific policy map actions
+• Restrict the maximum bandwidth of a virtual circuit (VC) while allowing policing and marking of traffic
+classes within the VC The service-policy command is used to apply a policy to another policy, and a
+policy to an interface, subinterface, VC, or VLAN. For example, in a three-level hierarchical policy, use the
+service-policy command to apply:
+• Bottom-level policy to a middle-level policy • Middle-level policy to a top-level policy • Top-level policy to
+an interface, subinterface, VC, or VLAN
+
+9.1 Two-Level Hierarchical Policies
+
+Two-level hierarchical policies, also called nested polices, can be illustrated with a parent-level policy for
+the top level of the hierarchy and a child-level for the bottom level of the hierarchy. A two-level
+hierarchical policy can have policing-only polices at the parent and child levels or can have queueing and
+policing at the parent and child levels. Hierarchical policies are configured by attaching a policy directly to
+a class of traffic.
+
+9.2 Three-Level Hierarchical Policies
+Below example shows a three-level hierarchical policy in a Frame Relay environment in which the goal is
+to shape a Frame Relay PVC to a maximum rate (effectively creating an interface with a specific
+bandwidth) and then manage the bandwidth of the PVC.

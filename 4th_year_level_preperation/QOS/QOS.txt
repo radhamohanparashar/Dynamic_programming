@@ -1,0 +1,145 @@
+QoS Toolbelt
+
+1- Classification
+2- Policing
+3- Marking
+4- Shaping
+5- Congestion Management
+6- Congestion Avoidance
+
+
+
+2.2.1 Classification
+Classification involves identifying and grouping different traffic types.
+
+
+
+2.2.2 Policing
+Policing is normally referred discard of packet above the configured rate. It drops or remark exceeding
+traffic.
+
+
+2.2.3 Marking
+Marking tags and colors the packets so it can be quickly recognized elsewhere in the network.
+
+
+
+	
+	
+1. Shaping 
+ 
+Shaping is a gentle version of policing. Shaping is used to create a traffic flow that limits the full bandwidth potential of the flow. Queues excess traffic to send at desired rate.
+2. Congestion Management Tools
+ 
+Congestion caused by speed miss match and link aggregation: -
+ 
+
+ 
+Above is the example where we have 100/1000 Mbps link at ingress and 1.544 (T1) link at egress direction.
+ 
+One way of network element to handle an overflow of arriving traffic is to use queuing algorithm to sort the traffic. Queuing strategy defines order in which packets are transmitted through egress port.
+ 
+· First in First out (FIFO) Queuing 
+· Priority Queuing PQ
+· Custom Queuing CQ
+· Flow Based Weighted Fair Queuing WFQ
+· Class based weighed fair queuing 
+	1. First in First out (FIFO) Queuing 
+ 
+FIFO queuing involves storing packets when the network is congested and forwarding them in order of arrival when the network is no longer congested FIFO queuing makes no decision about packet priority . 
+ 
+Number of Queues =1
+Method                    =FIFO
+Delay Guarantee     = No
+Bandwidth Guarantee =NO 
+ 
+Drawback:-  No prioritization of traffic 
+	1. Priority Queuing PQ
+ 
+Priority ensures that important traffic gets the fastest handling at each point where it is used. It was designed to to give strict priority to important traffic.
+ 
+Number of Queues =4
+Method                    =Strict Priority  
+Delay Guarantee     = Yes (for one queue)
+Bandwidth Guarantee =Somewhat (High priority can get the bandwidth)
+ 
+
+ 
+	1. Custom Queuing CQ
+ 
+CQ was designed to allow various application or organization to share the network among application with specific minimum bandwidth and latency requirement. Custom queuing handles traffic by assigning a specified amount of queue space to each class of packet and then servicing the queue in round robin fashion.
+ 
+ 
+Number of Queues =16
+Method                    = Round Robin 
+Delay Guarantee     = No (This method is not recommended because of delay guarantee) 
+Bandwidth Guarantee =Yes 
+ 
+ 
+ 
+
+ 
+	1. Flow Based Weighted Fair Queuing WFQ
+ 
+Flow based WFQ creates flow based on a number of characteristic in packet. Each flow is given its own queue for buffering if congestion is experienced  
+Number of Queues =Per Flow
+Method                    = Weighted Fair
+Delay Guarantee     = No 
+Bandwidth Guarantee =No 
+ 
+
+ 
+ 
+ 
+	1. Class Based weighted fair queuing: -
+ 
+With CBWFQ, a minimum amount of bandwidth can be reserved for a certain classis. If more bandwidth is available, that class is welcome to use. The key is that it is welcome to use minimum amount of bandwidth. Also, if a class is not using its guaranteed bandwidth, other application may use the bandwidth.
+ 
+Number of Queues = Up to 256 Classes 
+Method                    = N/A
+Delay Guarantee     = No 
+Bandwidth Guarantee = Yes 
+ 
+It is excellent method to use in the network where VOIP is not used.
+ 
+	1. Low latency Queuing
+ 
+CBWFQ is a modern congestion management technique and it is not advised for Voice and Video traffic.
+CBWFQ will be used with Low Latency Queuing (LLQ) to deploy voice and video traffic to give strict priorities. LLQ is adding Priority Queueing to the CBWFQ.
+The Priority Queue is used only for Voice / Video or mission critical traffic, without having the Queue Starvation for other Queues.  The starvation is avoided using the policing, the traffic in Priority Queue is policed and the Queue can get to whatever the bandwidth it was assigned.
+ 
+ 
+Number of Queues =  PQ+CBWFQ
+Method                    = N/A
+Delay Guarantee     = YES (PQ)
+Bandwidth Guarantee = Yes 
+Strategy when provisioning LLQ
+ 
+
+ 
+ 
+3. Congestion Avoidance
+ 
+Congestion avoidance is a form of queue management. Congestion avoidance techniques monitors network traffic loads in an effort to anticipate and avoid congestion at common network bottleneck  ,as opposed to congestion management techniques that operate to control congestion after it occurs
+Tail Drop: -
+Tail drop treats all traffic equally and does not differentiate between classes of service. Queues fill during periods of congestion. When the output queue is full and tail drop is in effect, packets are dropped until the congestion is eliminated and the queue is no longer full.
+ 
+Congestion management scheme is useless without using congestion avoidance scheme. 
+ 
+	1. Random Early Detection 
+ 
+Randomly drops packet from TCP flows to minimize synchronization.
+	1. Weighted Random Early Detection 
+ 
+WRED gives you the control over what type of traffic gets drop rather than dropping the traffic randomly. RED combines the capabilities of the RED algorithm with IP precedence. The combination provides for preferential traffic handling for higher priority packets. It can selectivity discard lower priority traffic when the interface starts to get congested and can provide differentiated performance characteristic for different classes of service.
+	1. WRED Parameters
+ 
+Defining the minimum threshold, maximum threshold, and mark probability denominator is not a simple task. It depends upon many factors such as the offered load, number of TCP sessions, and the type of traffic (FTP, HTTP, interactive, etc).  A reasonable assumption is that the number of TCP sessions will increase as the size of the access link increases. Therefore, in order to function in an optimal manner, different thresholds must exist for ranges of access speeds. In addition, in order to provide preferential treatment for higher precedence traffic, different thresholds must exist for each drop precedence (low/medium/high) within an AF class. This will ensure that high drop precedence traffic is dropped before medium drop precedence traffic, and medium drop precedence traffic is dropped before low drop precedence traffic.
+The recommended parameters for the Global MPLS-VPN are based upon a bandwidth measurement “B”.  The factor “B” is derived from the bandwidth made available to a particular class, divided by the MTU of the traffic within that class in bits. 
+
+ 
+It should be noted that the MTU is always considered to be 1500-bytes.
+For example, if the configured bandwidth for a particular class is 512kb/s, B is derived from the following:
+4. QoS Classification Layers in Frames and Packets
+ 
+Below is the Frame/Packet structure :-

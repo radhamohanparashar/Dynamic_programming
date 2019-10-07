@@ -1,0 +1,8 @@
+1. What is Qos ?
+    
+2. What is queueing and explain any queueing alogrithm?
+3. What is shaping and how we achieve shaping ?
+4. What is delay, jitter and latency ?
+5. What is policer ?
+6. Different module is QOS ?
+7. What is WRED and what is the algorithm used in WRED ?
