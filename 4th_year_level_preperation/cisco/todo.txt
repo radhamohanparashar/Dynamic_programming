@@ -1,0 +1,39 @@
+
+*******************************************************************
+Easy Level
+*******************************************************************
+
+
+
+Bubble Sort
+
+Count set bits in an integer
+
+Find the Missing Number
+
+How to check if a given array represents a Binary Heap?
+
+Level Order Tree Traversal
+
+Write a program to print all permutations of a given string
+
+Insertion Sort
+
+Reverse words in a given string
+
+Sorted Array to Balanced BST
+
+Write a function to reverse a linked list
+
+
+*******************************************************************
+Medium Level
+*******************************************************************
+
+
+
+Greedy Algorithms | Set 5 (Prim’s Minimum Spanning Tree (MST))
+
+Greedy Algorithms | Set 7 (Dijkstra's shortest path algorithm)
+
+K'th largest element in a stream
