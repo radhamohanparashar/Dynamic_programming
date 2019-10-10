@@ -5,6 +5,7 @@ struct node
    int data;
 };
 struct node* insert(int data)
+struct node* GetNewNode(int data)
 {
    struct node *new_node = NULL;
    new_node = (struct node *)malloc(sizeof(struct node));
